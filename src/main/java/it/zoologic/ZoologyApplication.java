@@ -13,8 +13,8 @@ import it.zoologic.domain.*;
 @SpringBootApplication
 public class ZoologyApplication {
 
-	@Autowired
-	private PasswordEncoder passwordEncoder;
+	 @Autowired
+	 private PasswordEncoder passwordEncoder;
 
 	@Bean
 	public CommandLineRunner loadData(UtenteRepository utenteRepository,
@@ -28,7 +28,7 @@ public class ZoologyApplication {
 									  AfferimentoRepository afferimentoRepository) {
 		return (args) -> {
 			Utente luca = new Utente();
-			luca.setUsername("pattakill96");
+			luca.setUsername("patta");
 			luca.setPassword(passwordEncoder.encode("luca"));
 			luca.setNome("luca");
 			luca.setCognome("pattavina");

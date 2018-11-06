@@ -41,6 +41,11 @@ public class ZoologyServiceImpl implements ZoologyService {
 	}
 
 	@Override
+	public List<Utente> findAllUtenti() throws BusinessException {
+		return utenteRepository.findAll(JpaSort.unsafe(Direction.DESC, "id"));
+	}
+
+	@Override
 	public List<Specie> findAllSpecie() throws BusinessException {
 		return specieRepository.findAll(JpaSort.unsafe(Direction.DESC, "id"));
 	}

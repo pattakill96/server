@@ -6,6 +6,8 @@ import it.zoologic.domain.*;
 
 public interface ZoologyService {
 
+	List<Utente> findAllUtenti() throws BusinessException;
+
 	Utente findUtenteByUsername(String username) throws BusinessException;
 
 	Utente updateProfilo(Utente utente) throws BusinessException;

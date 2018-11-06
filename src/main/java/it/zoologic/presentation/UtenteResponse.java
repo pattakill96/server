@@ -5,12 +5,13 @@ import it.zoologic.domain.Utente;
 
 public class UtenteResponse {
 
+	private String tipo;
 	private String username;
 	private String nome;
 	private String cognome;
 	private String email;
-	private String ruolo;
 	private String telefono;
+	private String password;
 	
 	public UtenteResponse() {
 	}
@@ -21,10 +22,11 @@ public class UtenteResponse {
 		this.username = utente.getUsername();
 		this.email = utente.getEmail();
 		this.telefono = utente.getTelefono();
+		this.password = utente.getPassword();
 		if (utente instanceof Admin) {
-			this.ruolo = "admin";
+			this.tipo = "admin";
 		} else {
-			this.ruolo = "base";
+			this.tipo = "base";
 		}
 	}
 	
@@ -42,6 +44,9 @@ public class UtenteResponse {
 	}
 	public String getUsername() {
 		return username;
+	}
+	public String getPassword() {
+		return password;
 	}
 	public void setUsername(String username) {
 		this.username = username;
@@ -61,12 +66,12 @@ public class UtenteResponse {
 		this.telefono = telefono;
 	}
 
-	public String getRuolo() {
-		return ruolo;
+	public String getTipo() {
+		return tipo;
 	}
 
-	public void setRuolo(String ruolo) {
-		this.ruolo = ruolo;
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
 	}
 
 }
