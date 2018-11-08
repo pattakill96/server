@@ -35,8 +35,8 @@ public class Utente {
 	@Column(name = "username", nullable = false, length = 16, updatable = false, unique = true)
 	private String username;
 
-	@JsonIgnore
-	@Column(name = "passord", nullable = false, length = 255)
+	//@JsonIgnore
+	@Column(name = "password", nullable = false, length = 255)
 	private String password;
 	
 	@Column(name = "email", nullable = false, length = 255)

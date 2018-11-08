@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.jpa.domain.JpaSort;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,6 +17,9 @@ import it.zoologic.domain.*;
 @Service
 @Transactional
 public class ZoologyServiceImpl implements ZoologyService {
+
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 
 	@Autowired
 	private UtenteRepository utenteRepository;
@@ -50,15 +54,13 @@ public class ZoologyServiceImpl implements ZoologyService {
 		return specieRepository.findAll(JpaSort.unsafe(Direction.DESC, "id"));
 	}
 
-	// @Override
-	// public Notizia findNotiziaById(Long id) throws BusinessException {
-	// 	return notiziaRepository.findById(id).get();
-	// }
-
 	@Override
 	public Utente updateProfilo(Utente profilo) throws BusinessException {
 		Utente utente = utenteRepository.findByUsername(profilo.getUsername());
 		utente.setEmail(profilo.getEmail());
+		utente.setNome(profilo.getNome());
+		utente.setPassword(passwordEncoder.encode(profilo.getPassword()));
+		utente.setCognome(profilo.getCognome());
 		utente.setTelefono(profilo.getTelefono());
 		return utente;
 	}
@@ -91,6 +93,11 @@ public class ZoologyServiceImpl implements ZoologyService {
 	@Override
 	public void createArticolo(Articolo Articolo) throws BusinessException {
 		articoloRepository.save(Articolo);		
+	}
+
+	@Override
+	public void createUtente(Utente utente) throws BusinessException {
+		utenteRepository.save(utente);		
 	}
 
 	@Override

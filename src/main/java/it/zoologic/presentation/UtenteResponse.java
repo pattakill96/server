@@ -51,6 +51,9 @@ public class UtenteResponse {
 	public void setUsername(String username) {
 		this.username = username;
 	}
+	public void setPasswword(String password) {
+		this.password = password;
+	}
 	public String getEmail() {
 		return email;
 	}

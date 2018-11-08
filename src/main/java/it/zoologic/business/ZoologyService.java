@@ -26,6 +26,8 @@ public interface ZoologyService {
 
 	void createArticolo(Articolo articolo) throws BusinessException;
 
+	void createUtente(Utente Utente) throws BusinessException;
+
 	Articolo findArticoloById(long id) throws BusinessException;
 
 	List<Articolo> findAllArticoli() throws BusinessException;

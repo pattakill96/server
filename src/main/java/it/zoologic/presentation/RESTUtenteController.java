@@ -54,7 +54,13 @@ public class RESTUtenteController {
 		return new UtenteResponse(((UserDetailsImpl) userDetails).getUtente());
 	}
 
-	@PostMapping("/utente/updateprofilo")
+	@GetMapping("/verifyToken")
+	public UtenteResponse verifyToken(){
+		UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		return new UtenteResponse(((UserDetailsImpl) userDetails).getUtente());
+	}
+
+	@PostMapping("/utente/update")
 	public UtenteResponse updateProfilo(@RequestBody Utente utente) {
 		Utente nuovoUtente = ZoologyService.updateProfilo(utente);		
 		return new UtenteResponse(nuovoUtente);
@@ -64,5 +70,11 @@ public class RESTUtenteController {
 	public List<Utente> list() {
 		return ZoologyService.findAllUtenti();
 	}
+
+	@PostMapping("/utente")
+	public void createUtente(@RequestBody Utente utente) {
+		ZoologyService.createUtente(utente);		
+	}
+
 	
 }
